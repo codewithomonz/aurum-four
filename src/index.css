@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&family=DM+Sans:wght@400;500;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "tailwindcss";
+
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --c-bg: 16 11 20;
+  --c-surface: 28 21 33;
+  --c-surface-2: 40 31 46;
+  --c-line: 74 62 80;
+  --c-ink: 245 241 232;
+  --c-muted: 172 162 178;
+  --c-primary: 214 169 74;
+  --c-primary-ink: 24 18 6;
+  --c-accent: 238 214 150;
+  --c-success: 96 204 142;
+  --c-danger: 240 108 108;
+  --c-board: 33 24 44;
+  --c-board-hi: 50 38 64;
+  --c-hole: 10 6 14;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --c-bg: 247 244 237;
+  --c-surface: 255 255 255;
+  --c-surface-2: 240 235 224;
+  --c-line: 214 207 192;
+  --c-ink: 28 25 20;
+  --c-muted: 104 98 86;
+  --c-primary: 138 98 10;
+  --c-primary-ink: 255 255 255;
+  --c-accent: 120 84 6;
+  --c-success: 18 120 66;
+  --c-danger: 190 40 40;
+  --c-board: 36 27 48;
+  --c-board-hi: 54 42 70;
+  --c-hole: 12 8 18;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply font-ui text-ink antialiased;
+    min-height: 100dvh;
+    background:
+      radial-gradient(
+        900px 520px at 50% -8%,
+        rgb(var(--c-primary) / 0.16),
+        transparent 65%
+      ),
+      radial-gradient(
+        700px 500px at 100% 100%,
+        rgb(var(--c-accent) / 0.08),
+        transparent 60%
+      ),
+      rgb(var(--c-bg));
+    background-attachment: fixed;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--c-accent));
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: rgb(var(--c-primary) / 0.35);
+  }
+}
+
+@layer components {
+  .glass {
+    @apply border border-line/70 bg-surface/70 shadow-lift backdrop-blur-xl;
+  }
+
+  .text-gold {
+    background-image: linear-gradient(
+      100deg,
+      rgb(var(--c-accent)),
+      rgb(var(--c-primary)) 55%,
+      rgb(var(--c-accent))
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
